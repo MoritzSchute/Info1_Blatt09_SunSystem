@@ -13,11 +13,8 @@ class Himmelskoerper:
 	
 	#Klassenvariablen: Plot Sachen
 	__fig = plt.figure(figsize= (10,6))
-	__ax = plt.axes(projection='3d')
-	__ax.set_xlabel('x in m')
-	__ax.set_ylabel('y in m')
-	__ax.set_zlabel('z in m')
-	__ax.set
+	ax = plt.axes(projection='3d')
+
 
 	#Klassendictonary: Farbcode
 	__color_dict = {'STA': 'y', #Stern: gelb
@@ -39,7 +36,7 @@ class Himmelskoerper:
 		None.
 
 		"""
-		#Umrechnungsfaktor, da 
+		#Umrechnungsfaktor, da Einheiten in AE, bzw. AE/Tag
 		AE = 1.496*10**11
 
 		self.id = countable_specifications[0]
@@ -57,7 +54,8 @@ class Himmelskoerper:
 	def plot_Himmelskoerper (self):
 		"""Plotte Instanz von Himmelskörper."""
 
-		self.__ax.scatter(self.pos_x, self.pos_y, self.pos_z, s = self.point_size, c = self.color)	
+		self.ax.scatter(self.pos_x, self.pos_y, self.pos_z, s = self.point_size, c = self.color)
+		
 
 		
 	
