@@ -14,25 +14,16 @@ import numpy as np
 import time
 
 
-#Main
-
 TIME_DIF = 86400
-DAYS = 400
+DAYS = 2000
 system = SunSystem()
 
 t1 = time.time()
 
-system.plot_SunSystem(0)
+for t in range (int(DAYS * 86400 / TIME_DIF)):
 
-for t in range (1, int(DAYS * 86400 / TIME_DIF)):
-
-	system.move_objects(TIME_DIF, system.calculate_forces_2_1)
-
-	system.plot_SunSystem_lines(86400 * t / TIME_DIF, 10)
+	system.move_objects_and_plot(TIME_DIF, TIME_DIF * t / 86400)
 
 t2 = time.time()
 
 print('Zeit für Code: ', t2-t1, end = '   ')
-
-plt.close()
-
