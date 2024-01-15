@@ -2,23 +2,56 @@ import numpy as np
 
 
 class ForceCalculator:
+    """Klasse für Berechnung der Kräfte unter den Körpern"""
+
+    #Klassenvariable:
+    GRAVITATION_CONSTANT = 6.67408e-11
     
     def __init__(self, version):
+
+        """
+		Weise Instanz Attribute zu (Version der Kraftberechnung).
+
+		Parameters
+		----------
+		force_version: int
+			Variable für Version der Kräfteberechnung
+
+		Returns
+		-------
+		None.
+
+		"""
 
         #assert type(specification_array) == np.ndarray
         #assert np.shape(specification_array)[1] == 4
         #assert np.dtype(specification_array) == np.number
 
+        #Erstelle Klassenvariable
         self.version = version
 
-        self.GRAVITATION_CONSTANT = 6.67408e-11
 
     def calculate_forces(self, specification_array):
+
+        """
+		Berechne alle Kräfte zwischen den Körpern im System.
+
+		Parameters
+		----------
+		specification_array: np.ndarray
+            Array, das x-, y- und z-Positionen aller Körper enthält.
+
+		Returns
+		-------
+		Array mit gegenseitigen Kräften der Körper aufeinander.
+
+		"""
 
         if self.version == 1:
             return self.calculate_forces_1(specification_array)
         
         if self.version == 2:
+            #Fastest Version!
             return self.calculate_forces_2_1(specification_array)
         
         if self.version == 3:
